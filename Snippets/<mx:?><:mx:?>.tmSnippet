@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>paddingTop="$1" paddingBottom="$1"</string>
+	<string>&lt;mx:${1:Object}&gt;$0&lt;/mx:$1&gt;</string>
 	<key>name</key>
-	<string>padding: top bottom</string>
+	<string>&lt;mx:?&gt;&lt;/mx:?&gt;</string>
 	<key>scope</key>
 	<string>source.mxml</string>
 	<key>tabTrigger</key>
-	<string>pad</string>
+	<string>mx</string>
 	<key>uuid</key>
-	<string>1C4F6EE3-5931-4C7D-B9B5-F061AF33088D</string>
+	<string>2E4B421C-8C4A-445B-B02C-BD92920FE7DF</string>
 </dict>
 </plist>

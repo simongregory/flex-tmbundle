@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Comments</string>
+	<string>Comments (MXML)</string>
 	<key>scope</key>
-	<string>text.xml.mxml</string>
+	<string>source.mxml</string>
 	<key>settings</key>
 	<dict>
 		<key>shellVariables</key>

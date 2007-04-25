@@ -1,4 +1,0 @@
-h1. Flex.tmbundle
-
-This is a mirror of the official Flex TextMate Bundle.
-

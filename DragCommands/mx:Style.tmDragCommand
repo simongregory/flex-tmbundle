@@ -26,11 +26,11 @@
 		<string>css</string>
 	</array>
 	<key>name</key>
-	<string>Style</string>
+	<string>mx:Style</string>
 	<key>output</key>
 	<string>insertAsSnippet</string>
 	<key>scope</key>
-	<string>text.xml.mxml</string>
+	<string>source.mxml</string>
 	<key>uuid</key>
 	<string>04726559-E50D-4F28-B927-F1B704C6EA81</string>
 </dict>

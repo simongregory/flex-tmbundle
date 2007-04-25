@@ -15,7 +15,7 @@
 		*	@langversion ActionScript 3.0
 		*	@playerversion Flash 9.0
 		*
-		*	@author ${TM_FULLNAME}
+		*	@author ${TM_USERNAME}
 		*	@since  ${TM_DATE}
 		*/
 		
@@ -24,7 +24,7 @@
 		*	
 		*	@see mx.events.FlexEvent
 		*/
-		private function onCreationComplete(event:FlexEvent):void {}
+		private function onCreationComplete(event:FlexEvent) : void {}
 		
 	]]></mx:Script>
 	

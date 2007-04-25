@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>&lt;mx:${1:name} /&gt;</string>
+	<string>&lt;mx:${1:Object} $2/&gt;</string>
 	<key>name</key>
-	<string>Short mx: Tag</string>
+	<string>&lt;mx:? /&gt;</string>
 	<key>scope</key>
-	<string>text.xml.mxml</string>
+	<string>source.mxml</string>
 	<key>tabTrigger</key>
-	<string>&gt;</string>
+	<string>mx</string>
 	<key>uuid</key>
-	<string>AAB360E1-7E46-40FA-883D-2991E9CC0B96</string>
+	<string>1F95B9DE-99E9-44F5-ACF2-0FACF30BF417</string>
 </dict>
 </plist>

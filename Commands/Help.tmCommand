@@ -1,58 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
 	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
-html_header "Flex Help Bundle Help" "Flex"
+html_header "Flex Help"
 
-"$TM_SUPPORT_PATH/lib/markdown_to_help.rb" &lt;&lt;'EOF'
+Markdown.pl &lt;&lt;'EOF'
 
-# Installation
+For build commands and Documenation make sure you have the ActionScript 3 bundle enabled.
 
-See **Bundles** &gt; **ActionScript 3** &gt;  **Help** for help on installing and setting up the Flex environment.
+See **Bundles** &gt; **ActionScript 3** &gt;  **Help** for help on installing and setting up the flex environment.
 
-# Commands
 
-For Build Commands and Documenation support please enable the ActionScript 3 bundle.
-
-## Auto Complete Tag
-
-**Target:** Current Word  
-**Key Equivalent:**  ⌥⎋  
-Attempts to auto complete the tag you have partially typed.
-
-## Generate Manifest
-
-**Target:** Project  
-Genrates a Manifest for all source files located within the project src directory.
-
-## Open Code Behind
-
-**Target:** Document  
-**Key Equivalent:**  ⇧⌘D  
-**Scope:** text.xml.mxml  
-Attempts to locate then open the ActionScript super class of the current document.
-
-## Open Component
-
-**Target:** Current Word  
-**Key Equivalent:**  ⇧⌘D  
-**Scope:** entity.name.tag.localname.xml.mxml  
-Attempts to locate then open the Class referenced by the current word.
-
-## Tidy
-
-**Target:** Selected Text or Document  
-**Key Equivalent:**  ^⇧H 
-**Scope:** text.xml.mxml  
-Pretty prints the document or selection using `tidy`.
-
-EOF
-
-html_footer</string>
+EOF</string>
 	<key>input</key>
 	<string>none</string>
 	<key>name</key>
@@ -60,7 +23,7 @@ html_footer</string>
 	<key>output</key>
 	<string>showAsHTML</string>
 	<key>scope</key>
-	<string>text.xml.mxml</string>
+	<string>source.mxml</string>
 	<key>uuid</key>
 	<string>22A608C6-CCCB-4EC0-9DDC-80173427BFE1</string>
 </dict>

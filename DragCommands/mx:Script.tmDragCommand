@@ -33,11 +33,11 @@ fi
 		<string>as</string>
 	</array>
 	<key>name</key>
-	<string>Script</string>
+	<string>mx:Script</string>
 	<key>output</key>
 	<string>insertAsSnippet</string>
 	<key>scope</key>
-	<string>text.xml.mxml</string>
+	<string>source.mxml</string>
 	<key>uuid</key>
 	<string>6DA5B70A-AF1C-46CD-98B3-52CDA3528945</string>
 </dict>

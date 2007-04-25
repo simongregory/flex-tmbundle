@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>beforeRunningCommand</key>
@@ -15,29 +15,21 @@ require SUPPORT + '/lib/exit_codes'
 require SUPPORT + '/lib/osx/plist'
 
 #Search for
-word = STDIN.read.strip
-TextMate.exit_show_tool_tip("Please select a term to complete.") if word.empty?
+WORD = STDIN.read.strip
+TextMate.exit_show_tool_tip("Please select a term to complete.") if WORD.empty?
 
-word = "mx:"+word if word !~ /mx/
-
-words = `grep -i "#{word}" "$TM_BUNDLE_PATH/support/data/mx_completions.txt"`.split("\n")
+words = `grep "#{WORD}" "$TM_BUNDLE_PATH/support/data/mx_completions.txt"`.split("\n")
 TextMate.exit_show_tool_tip "No completion available" if words.empty?
 
 if words.size &gt; 1
     
 	words = words.collect { |e| 
-	    mxmlTag = /mx\:(\w+)(\s(\(\w+\)))?/.match(e)
-		suffix = " "
-		tag = e
-		if mxmlTag[3] != nil
-			suffix += mxmlTag[3]
-			tag = e.sub(mxmlTag[3],'')
-		end
-	    { 'title' =&gt; mxmlTag[1] + suffix, 'data' =&gt; tag } 
+	    mxmlTag = /mx\:\w+/.match(e)
+	    { 'title' =&gt; mxmlTag[0] , 'data' =&gt; e } 
 	}
 	plist = { 'menuItems' =&gt; words }.to_plist
 	
-	res = OSX::PropertyList::load(`#{e_sh DIALOG} -up #{e_sh plist}`)
+	res = PropertyList::load(`#{e_sh DIALOG} -up #{e_sh plist}`)
 
 	TextMate.exit_discard() unless res.has_key? 'selectedMenuItem'
 	choice = res['selectedMenuItem']['data']
@@ -62,7 +54,7 @@ print choice
 	<key>output</key>
 	<string>insertAsSnippet</string>
 	<key>scope</key>
-	<string>text.xml.mxml</string>
+	<string>source.mxml</string>
 	<key>uuid</key>
 	<string>44EE8C38-BC20-41A2-86D2-82EF987B3010</string>
 </dict>
