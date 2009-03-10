@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby -wKU
+require ENV['TM_SUPPORT_PATH'] + '/lib/osx/plist'
+require ENV['TM_SUPPORT_PATH'] + '/lib/ui'
+
+choices = OSX::PropertyList.load(File.read(ENV['TM_BUNDLE_SUPPORT'] + '/data/components.plist'))
+
+#Returned selection.
+#{ display = 'Parallel'; insert = '&lt;mx:Parallel&gt;$0&lt;/mx:Parallel&gt;' }
+# tm adds an index value to this.
+
+# Possible prefixes when invoked:
+#	&lt;
+#	&lt;mx
+#	&lt;Ar
+#	&lt;mx:
+
+li = ENV['TM_LINE_INDEX'] 
+ln = ENV['TM_CURRENT_LINE']
+la = ln.split("")
+i = li.to_i-1
+found = []
+
+while i &gt;= 0
+
+	current_letter = la[i]
+	if current_letter =~ /\&lt;|\s/
+		found &lt;&lt; "&lt;"
+		break
+	end
+	
+	found &lt;&lt; current_letter
+	i -= 1
+
+end
+
+namespace = ''
+prefix = found.reverse.to_s
+
+if prefix =~ /^\&lt;(w+:)/
+	namespace = $1
+end
+
+TextMate::UI.complete(choices, {:case_insensitive =&gt; true, :initial_filter =&gt; ENV['TM_CURRENT_WORD'] } ) { |selection|
+	#pre = '&lt;'+namespace  #+selection['display']
+	#snip = selection['insert'].sub(pre,'')
+	"| " + namespace + "&lt;&gt;" + selection['display'] + " |"
+	''
+}
+
+
+</string>
+	<key>fallbackInput</key>
+	<string>word</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>~</string>
+	<key>name</key>
+	<string>Auto Complete</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>scope</key>
+	<string>text.xml.mxml</string>
+	<key>uuid</key>
+	<string>7755F61C-8027-45C1-A3C2-A22620D7A7C4</string>
+</dict>
+</plist>

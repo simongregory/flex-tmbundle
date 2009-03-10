@@ -55,8 +55,6 @@ print choice
 	<string>word</string>
 	<key>input</key>
 	<string>selection</string>
-	<key>keyEquivalent</key>
-	<string>~</string>
 	<key>name</key>
 	<string>Auto Complete MX Component</string>
 	<key>output</key>
