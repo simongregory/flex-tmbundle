@@ -1,6 +1,11 @@
 TextMate Flex Bundle
 ====================
 
+Work Branch
+-----------
+
+Experimental branch of 'master' attempting to improve autocompletion using DIALOG2.
+
 Installation
 ------------
 
