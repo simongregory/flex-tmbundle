@@ -2,53 +2,75 @@
 
 require ENV['TM_SUPPORT_PATH'] + '/lib/textmate.rb'
 
-@bundle_paths = [ "#{ENV["HOME"]}/Library/Application Support/TextMate/Bundles",
-									"#{ENV["HOME"]}/Library/Application Support/TextMate/Pristine Copy/Bundles",								  
-								  "/Library/Application Support/TextMate/Bundles" ]
+class BundleLocator
+  attr_reader :bundle_paths
+  def initialize
 
-begin
-	@bundle_paths << TextMate::app_path.gsub('(.*?)/MacOS/TextMate','\1') + "/Contents/SharedSupport/Bundles"
-rescue
+    @bundle_paths = [ "#{ENV["HOME"]}/Library/Application Support/TextMate/Bundles",
+                      "#{ENV["HOME"]}/Library/Application Support/TextMate/Pristine Copy/Bundles",
+                      "/Library/Application Support/TextMate/Bundles" ]
+    begin
+      @bundle_paths << TextMate::app_path.gsub('(.*?)/MacOS/TextMate','\1') + "/Contents/SharedSupport/Bundles"
+    rescue
+    end
+
+  end
+
+  def find_bundle_dir(target)
+    p = @bundle_paths.find { |dir| File.directory? "#{dir}#{target}" }
+    return "#{p}#{target}" if p
+  end
+
+  def find_bundle_item(target)
+    p = @bundle_paths.find { |dir| File.exist? "#{dir}#{target}" }
+    return "#{p}#{target}" if p
+  end
+
 end
 
+#Legacy Support
 def find_bundle_dir(target)
-	p = @bundle_paths.find { |dir| File.directory? "#{dir}#{target}" }
-	return "#{p}/#{target}" if p
+  return BundleLocator.new.find_bundle_dir(target)
 end
 
 def find_bundle_item(target)
-	p = @bundle_paths.find { |dir| File.exist? "#{dir}#{target}" }
-	return "#{p}#{target}" if p
+  return BundleLocator.new.find_bundle_item(target)
 end
 
-# Tests.
 if __FILE__ == $0
-	
-	puts "Search locations:"
-	puts @bundle_paths
-	
-	puts ""
-  
-	d = "/ActionScript 3.tmbundle/Support/lib"
-  puts "Dir Path:"
-  puts find_bundle_dir(d)
 
-	puts ""
+  require "test/unit"
 
-	i = "/A Non Existent.tmbundle/Support/lib"
-  puts "Item Path:"
-  puts find_bundle_dir(i)
+  class TestBundleLocator < Test::Unit::TestCase
 
-	puts ""
+    def test_item
 
-	i = "/ActionScript 3.tmbundle/Support/lib/class_parser.rb"
-  puts "Item Path:"
-  puts find_bundle_item(i)
+      b = BundleLocator.new
+      item_a = "/ActionScript 3.tmbundle/Support/lib/flex_env.rb"
+      item_b = "/A Non Existent.tmbundle/Support/lib/foo.rb"
+      
+      assert_equal( "/Users/#{ENV['USER']}/Library/Application Support/TextMate/Bundles/ActionScript 3.tmbundle/Support/lib/flex_env.rb",
+                    b.find_bundle_item(item_a))
+      
+      assert_equal( nil,
+                    b.find_bundle_item(item_b))
 
-	puts ""
+    end
 
-	i = "/A Non Existent.tmbundle/Support/lib/foo.rb"
-  puts "Item Path:"
-  puts find_bundle_item(i)
-	
+    def test_dir
+
+      b = BundleLocator.new
+      dir_a = "/ActionScript 3.tmbundle/Support/lib"
+      dir_b = "/A Non Existent.tmbundle/Support/lib"
+      
+      assert_equal("/Users/#{ENV['USER']}/Library/Application Support/TextMate/Bundles/ActionScript 3.tmbundle/Support/lib",
+                   b.find_bundle_dir(dir_a))
+
+      assert_equal( nil,
+                    b.find_bundle_item(dir_b))
+
+    end
+
+  end
+
 end
