@@ -63,6 +63,7 @@
 			<string>clone</string>
 			<string>close</string>
 			<string>collectionChangeHandler</string>
+			<string>commitProperties</string>
 			<string>compare</string>
 			<string>completeHandler</string>
 			<string>concat</string>
