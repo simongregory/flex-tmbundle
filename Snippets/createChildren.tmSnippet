@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>override protected function createChildren( ) : void {
+	super.createChildren();
+
+	$0
+}
+</string>
+	<key>name</key>
+	<string>createChildren</string>
+	<key>scope</key>
+	<string>source.actionscript.3</string>
+	<key>tabTrigger</key>
+	<string>createChildren</string>
+	<key>uuid</key>
+	<string>3D38452B-6B8B-4A38-AF6D-3BB93C359B30</string>
+</dict>
+</plist>

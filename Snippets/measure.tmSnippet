@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>override protected function measure( ) : void {
+	super.measure();
+
+	measuredWidth  = measuredMinWidth  = $1;
+	measuredHeight = measuredMinHeight = $2;
+}
+</string>
+	<key>name</key>
+	<string>measure</string>
+	<key>scope</key>
+	<string>source.actionscript.3</string>
+	<key>tabTrigger</key>
+	<string>measure</string>
+	<key>uuid</key>
+	<string>20CA90B8-C97F-4096-B41C-8CA5E26F74FF</string>
+</dict>
+</plist>
