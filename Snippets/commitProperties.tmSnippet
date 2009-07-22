@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>override protected function commitProperties( ) : void {
+	<string>override protected function commitProperties():void
+{
 	super.commitProperties();
-
 	$0
 }
 </string>

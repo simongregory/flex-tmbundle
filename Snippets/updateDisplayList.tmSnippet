@@ -3,7 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>override protected function updateDisplayList( unscaledWidth : Number, unscaledHeight : Number ) : void {
+	<string>override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
+{
 	super.updateDisplayList(unscaledWidth, unscaledHeight);
 
 	$0

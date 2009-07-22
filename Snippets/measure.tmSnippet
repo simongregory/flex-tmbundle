@@ -3,7 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>override protected function measure( ) : void {
+	<string>override protected function measure():void
+{
 	super.measure();
 
 	measuredWidth  = measuredMinWidth  = $1;

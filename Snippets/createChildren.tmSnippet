@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>override protected function createChildren( ) : void {
+	<string>override protected function createChildren():void
+{
 	super.createChildren();
-
 	$0
 }
 </string>
