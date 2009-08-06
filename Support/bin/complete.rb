@@ -13,18 +13,17 @@ require ENV['TM_SUPPORT_PATH'] + '/lib/ui'
 
 li = ENV['TM_LINE_INDEX'] 
 ln = ENV['TM_CURRENT_LINE']
-la = ln.split("")
+la = ln.split('')
 i = li.to_i-1
 found = []
 
 while i >= 0
 
 	current_letter = la[i]
-	if current_letter =~ /\<|\s/
+	if current_letter =~ /(\<|\s)/
 		found << "<"
-
-		#Inject the opening bracket when there isn't one. 
-		print '<' unless $0 == '<'
+		#TODO: Inject the opening bracket when there isn't one. 
+		#print '<' unless current_letter  == '<'
 		break
 	end
 	
