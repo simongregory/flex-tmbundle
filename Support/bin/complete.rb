@@ -17,13 +17,20 @@ la = ln.split('')
 i = li.to_i-1
 found = []
 
+#TM_CURRENT_WORD isn't reliable in this instance so we need to do some extra
+#work to locate the characaters before the cursor.
+
 while i >= 0
 
 	current_letter = la[i]
 	if current_letter =~ /(\<|\s)/
 		found << "<"
-		#TODO: Inject the opening bracket when there isn't one. 
-		#print '<' unless current_letter  == '<'
+
+		#Inject the opening bracket when there isn't one (and there is no ns/initial filter)
+		#NOTE: Ideally it would be good to add the < before any existing input
+		#but it doesn't seem an easy thing to do with DIALOG2
+		print '<' if current_letter  != '<' && found.length == 1
+		
 		break
 	end
 	
