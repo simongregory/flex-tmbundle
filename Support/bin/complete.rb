@@ -1,6 +1,37 @@
 #!/usr/bin/env ruby -wKU
+
 require ENV['TM_SUPPORT_PATH'] + '/lib/osx/plist'
 require ENV['TM_SUPPORT_PATH'] + '/lib/ui'
+
+require File.expand_path(File.dirname(__FILE__)) + '/../lib/bundle_locator'
+
+def trace(msg)
+  `echo '#{msg}'>/Users/$USER/Desktop/flex_completion_debug.txt` #DEBUG
+end
+
+#Load the mxml and mxmlc-config file parsers.
+b = BundleLocator.new
+as3_lib = "/ActionScript 3.tmbundle/Support/lib"
+config_path = b.find_bundle_item("#{as3_lib}/as3/parsers/config.rb")
+mxml_path = b.find_bundle_item("#{as3_lib}/ActionScript 3.tmbundle/Support/lib/as3/parsers/mxml.rb")
+
+#trace config_path
+trace mxml_path
+
+if config_path && mxml_path
+	require config_path
+	require mxml_path
+else
+	TextMate.exit_show_tool_tip("Unable to load a script from the ActionScript 3 bundle.\nPlease make sure you have the bundle installed.")
+end
+
+doc = STDIN.read.strip
+mxml_doc = MxmlDoc.new(doc) 
+
+op = ''
+op << mxml_doc.super_namespace
+op << mxp.super_class
+trace op
 
 #Returned selection.
 #{ display = 'Parallel'; insert = '<mx:Parallel>$0</mx:Parallel>' }
@@ -41,8 +72,6 @@ end
 
 namespace = ''
 prefix = found.reverse.to_s
-
-#`echo '#{prefix}'>/Users/$USER/Desktop/flex_completion_debug.txt` #DEBUG
 
 if prefix =~ /^\<(\w+:)/
 	namespace = $1
