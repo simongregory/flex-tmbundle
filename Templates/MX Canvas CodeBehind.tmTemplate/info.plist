@@ -16,7 +16,7 @@ fi</string>
 	<key>extension</key>
 	<string>as</string>
 	<key>name</key>
-	<string>Canvas CodeBehind</string>
+	<string>Canvas Subclass</string>
 	<key>uuid</key>
 	<string>506817F9-954A-4B91-860A-9D96FB0055B6</string>
 </dict>
