@@ -2,6 +2,8 @@
 
 require ENV['TM_SUPPORT_PATH'] + '/lib/textmate.rb'
 
+#TODO: There's an obvious error with the logic of this as the user could quite easily change the name of the bundle. One way round it would be to use the bundles UUID.
+
 class BundleLocator
   attr_reader :bundle_paths
   def initialize
