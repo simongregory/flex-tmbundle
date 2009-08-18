@@ -9,7 +9,7 @@
 	<key>fallbackInput</key>
 	<string>word</string>
 	<key>input</key>
-	<string>none</string>
+	<string>document</string>
 	<key>keyEquivalent</key>
 	<string>~</string>
 	<key>name</key>
