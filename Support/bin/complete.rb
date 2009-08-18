@@ -172,6 +172,10 @@ TextMate::UI.complete(@components, {:case_insensitive => true, :initial_filter =
     snip.gsub!(/(#{known_namespaces.join('|')})\:/,'')
     snip.sub!("<#{inserted}",'')
     
+  elsif @mxml_doc.using_default_namespace
+
+    snip.sub!("<#{inserted}",'')
+    
   else
     
     snip.sub!("<#{namespace}:#{inserted}",'')
