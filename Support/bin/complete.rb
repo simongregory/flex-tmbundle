@@ -2,55 +2,99 @@
 
 require ENV['TM_SUPPORT_PATH'] + '/lib/osx/plist'
 require ENV['TM_SUPPORT_PATH'] + '/lib/ui'
+require ENV['TM_SUPPORT_PATH'] + '/lib/textmate'
 
 require File.expand_path(File.dirname(__FILE__)) + '/../lib/bundle_locator'
 
-def trace(msg)
-  `echo '#{msg}'>/Users/$USER/Desktop/flex_completion_debug.txt` #DEBUG
-end
-
-#Load the mxml and mxmlc-config file parsers.
-b = BundleLocator.new
-as3_lib = "/ActionScript 3.tmbundle/Support/lib"
-config_path = b.find_bundle_item("#{as3_lib}/as3/parsers/config.rb")
-mxml_path = b.find_bundle_item("#{as3_lib}/ActionScript 3.tmbundle/Support/lib/as3/parsers/mxml.rb")
-
-#trace config_path
-trace mxml_path
-
-if config_path && mxml_path
-	require config_path
-	require mxml_path
-else
-	TextMate.exit_show_tool_tip("Unable to load a script from the ActionScript 3 bundle.\nPlease make sure you have the bundle installed.")
-end
-
-doc = STDIN.read.strip
-mxml_doc = MxmlDoc.new(doc) 
-
-op = ''
-op << mxml_doc.super_namespace
-op << mxp.super_class
-trace op
-
-#Returned selection.
-#{ display = 'Parallel'; insert = '<mx:Parallel>$0</mx:Parallel>' }
-
-#Possible prefixes when invoked:
+# NOTES
+#
+# Needs to be invoked on a 'blank' line.
+#
+# Possible prefixes when invoked:
 #	<
-#	<mx
+# <mx
 #	<Ar
 #	<mx:
+#
+# It may well be worth refactoring this to work when following scopes 
+# for < and : as this could be more logical for the user (and easier to code).
+# 
+# Expects and uses the 'mx' namespace prefix to be mapped to the uri 
+# 'http://www.adobe.com/2006/mxml', if this has been changed then collision with 
+# the internally loaded mx completions list is likely to happen. We load this 
+# list as a short cut because it's always going to be used - and it gives us 
+# the oppourtunity to snippetize it.
 
+# def trace(msg)
+#   `echo '#{msg}'>/Users/$USER/Desktop/flex_completion_debug.txt` #DEBUG
+# end
+
+#Load the mxml and flex-config file parsers.
+b = BundleLocator.new
+e = "Unable to load a script from the ActionScript 3,tmbundle.
+Please make sure you have the bundle installed (and named correctly)."
+
+as3_bun = ENV['TM_ACTIONSCRIPT_3_BUNDLE_NAME'] || 'ActionScript 3.tmbundle'
+as3_lib = "/#{as3_bun}/Support/lib"
+
+b.require_bundle_item("#{as3_lib}/as3/parsers/config.rb",e)
+b.require_bundle_item("#{as3_lib}/as3/parsers/mxml.rb",e)
+b.require_bundle_item("#{as3_lib}/as3/parsers/manifest.rb",e)
+b.require_bundle_item("#{as3_lib}/as3/source_tools.rb",e)
+
+MX_2006_NAMESPACE_URI = 'http://www.adobe.com/2006/mxml'
+
+raw = STDIN.read.strip
 li = ENV['TM_LINE_INDEX'] 
 ln = ENV['TM_CURRENT_LINE']
+
+#We need to remove any invalid xml the user may be typing before passing 
+#the input to MxmlDoc. WARN: Unless the user has invoked completion on a blank 
+#line this is just as likely to break the parsing as fix it.
+filtered_doc = raw.split("\n")
+cln = ENV['TM_LINE_NUMBER'].to_i-1
+filtered_doc[cln] = ''
+
+begin
+  @mxml_doc = MxmlDoc.new(filtered_doc.to_s) 
+rescue Exception => e
+  TextMate.exit_show_tool_tip "The current mxml document has failed parsing.\nIs it valid xml?"
+end
+ 
+#Has to have TM_FLEX_FILE_SPECS specified for now.
+#Need to wire in work done within the new compiler scripts to get guesstimated docs.
+@flex_config = ConfigParser.new(true).flex_config
+
+known_namespaces = ['mx']
+@components = []
+
+# For every namespace in the document collect a list of classes mapped to it.
+@mxml_doc.namespaces.each { |ns|
+  
+  uri = ns[:name]
+  prefix = ns[:prefix]
+  
+  known_namespaces << prefix unless known_namespaces.include? prefix or prefix.empty?
+
+  #Were we come accross the mx framework namespace use the predetermined completions list.
+  if uri == MX_2006_NAMESPACE_URI
+    @components += OSX::PropertyList.load(File.read(ENV['TM_BUNDLE_SUPPORT'] + '/data/components.plist'))    
+  else
+    tag_ns = ( prefix.empty? ) ? '' : "#{prefix}:"
+    @components += @flex_config.class_list(uri).collect { |e|
+        { 'display' => e, 'insert' => "<#{tag_ns}#{e}$1>$2</#{tag_ns}#{e}>$0", 'prefix' => prefix }
+    }    
+  end
+}
+
+@components.flatten.uniq!
+
 la = ln.split('')
 i = li.to_i-1
 found = []
 
 #TM_CURRENT_WORD isn't reliable in this instance so we need to do some extra
-#work to locate the characaters before the cursor.
-
+#work to locate the characters before the cursor.
 while i >= 0
 
 	current_letter = la[i]
@@ -77,10 +121,6 @@ if prefix =~ /^\<(\w+:)/
 	namespace = $1
 end
 
-#TODO: Collect namespaces in the document, 
-known_namespaces = ['mx']
-ns_completions = OSX::PropertyList.load(File.read(ENV['TM_BUNDLE_SUPPORT'] + '/data/components.plist'))
-
 current_word = ENV['TM_CURRENT_WORD']
 current_word = '' unless current_word =~ /\w/
 
@@ -89,11 +129,35 @@ current_word = '' unless current_word =~ /\w/
 #as the initial_filter for UI.complete.
 if current_word =~ /(#{known_namespaces.join('|')})(:)?/
   current_word = ''
-  namespace = $1 + ':'
+  namespace = $1
   print ':' if $2.nil?
 end
 
-TextMate::UI.complete(ns_completions, {:case_insensitive => true, :initial_filter => current_word } ) { |choice|
+#Use cases: <     if default ns specified filter on it otherwise present all matches.
+#           <mx   use namespace as filter for completions.
+
+#Filter the list that's been collected based on the namespace (if one's provided).
+if namespace.empty? && @mxml_doc.using_default_namespace
+  
+  filter_namespace = ''
+  
+  #Lookup the default namespace uri and if it's mx filter mx only.
+  if @mxml_doc.default_namespace_uri == MX_2006_NAMESPACE_URI
+    filter_namespace = 'mx'
+  end
+  @components.reject! { |e| (e['prefix'] != filter_namespace) }
+  
+elsif namespace.empty?
+  
+  #Keep everything.
+  
+else
+
+  @components.reject! { |e| (e['prefix'] != namespace ) }
+  
+end
+
+TextMate::UI.complete(@components, {:case_insensitive => true, :initial_filter => current_word } ) { |choice|
 
   snip = choice['insert']
   inserted = choice['display']
@@ -101,17 +165,16 @@ TextMate::UI.complete(ns_completions, {:case_insensitive => true, :initial_filte
   #The string injected by the completion mechanism will already be output
   #so we need to accomodate for it. This will only be the class name which means we
   #have to work out what needs deleting from the start of the string.
+  if namespace.empty? && @mxml_doc.using_default_namespace == false
   
-  if namespace.empty?
-
     #Where the user is working without explicit namespaces we need to take them 
     #out of the completion string.
-    snip.gsub!(/#{known_namespaces.join('|')}\:/,'')
+    snip.gsub!(/(#{known_namespaces.join('|')})\:/,'')
     snip.sub!("<#{inserted}",'')
-        
+    
   else
     
-    snip.sub!("<#{namespace+inserted}",'')
+    snip.sub!("<#{namespace}:#{inserted}",'')
     
   end
     

@@ -50,6 +50,11 @@ Attempts to locate then open the Class referenced by the current word.
 **Scope:** text.xml.mxml  
 Pretty prints the document or selection using `tidy`.
 
+# Configuration Options
+
+* `TM_ACTIONSCRIPT_3_BUNDLE_NAME`  
+This bunlde needs the ActionScript 3 bundle to be installed (and named ActionScript 3.tmbundle) to work correctly. if you have changed it's name specify it here.
+
 EOF
 
 html_footer</string>
