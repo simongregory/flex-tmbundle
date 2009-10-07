@@ -31,8 +31,8 @@ require File.expand_path(File.dirname(__FILE__)) + '/../lib/bundle_locator'
 
 #Load the mxml and flex-config file parsers.
 b = BundleLocator.new
-e = "Unable to load a script from the ActionScript 3,tmbundle.
-Please make sure you have the bundle installed (and named correctly)."
+e = "Unable to load a script from the 'ActionScript 3.tmbundle'.
+Please make sure you have the bundle installed (and named as expected)."
 
 as3_bun = ENV['TM_ACTIONSCRIPT_3_BUNDLE_NAME'] || 'ActionScript 3.tmbundle'
 as3_lib = "/#{as3_bun}/Support/lib"
