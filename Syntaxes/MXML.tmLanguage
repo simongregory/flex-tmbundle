@@ -18,7 +18,7 @@
 	<array>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;)((mx)(:))?(Metadata|Script)(&gt;)</string>
+			<string>(&lt;)((mx|fx)(:))?(Metadata|Script)(&gt;)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -55,7 +55,7 @@
 			<key>contentName</key>
 			<string>source.actionscript.3.embedded.mxml</string>
 			<key>end</key>
-			<string>(&lt;/)((mx)(:))?(Metadata|Script)(&gt;)</string>
+			<string>(&lt;/)((mx|fx)(:))?(Metadata|Script)(&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
@@ -99,7 +99,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;)((mx)(:))?(Style)(&gt;)</string>
+			<string>(&lt;)((mx|fx)(:))?(Style)(&gt;)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -136,7 +136,7 @@
 			<key>contentName</key>
 			<string>source.css.embedded.mxml</string>
 			<key>end</key>
-			<string>(&lt;/)((mx)(:))?(Style)(&gt;)</string>
+			<string>(&lt;/)((mx|fx)(:))?(Style)(&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
