@@ -5,6 +5,7 @@
 <s:CheckBox id="$1" label="$2" click="${3:$1ClickHandler(event)}"/>
 <s:DataGroup id="$1" dataProvider="${2:null}" itemRenderer="${3:$1ItemRenderer}" rendererAdd="${4:$1RenderAddHandler(event)}" rendererRemove="${5:$1RenderRemove(event)}"/>
 <s:DataRenderer id="$1" data="$2" dataChange="${3:$1DataChangeHandler(event)}"/>
+<fx:Declarations>$0</fx:Declarations>
 <s:DropDownList id="$1" prompt="$2" closed="${3:$1ClosedHandler(event)}" open="${4:$1OpenHandler(event)}"/>
 <s:Group id="$1"/>
 <s:HGroup id="$1"/>
@@ -12,6 +13,7 @@
 <s:HSlider id="$1" minimum="${2:0}" maximum="${3:1}" value="${4:1}" stepSize="${5:0.1}" snapInterval="${6:0.1}" liveDragging="${7:true}" change="${8:$1ChangeHandler(event)}"/>
 <s:Label id="$1" width="$2" height="$3" styleName="$4"/>
 <s:List id="$1" allowMultipleSelection="${2:false}" selectedIndices="${3:null}" selectedItems="${4:null}" useVirtualLayout="${5:true}"/>
+<fx:Metadata>$0</fx:Metadata>
 <s:NavigatorContent id="$1" icon="${2:null}" label="$3"/>
 <s:NumericStepper id="$1" imeMode="${2:null}" maxChars="${3:10}" maximum="${4:10}" valueFormatFunction="${5:null}" valueParseFunction="${6:null}"/>
 <s:Panel id="$1" controlBarContent="${2:null}" controlBarLayout="${3:HorizontalLayout}" title="$4"}>$5</Panel>
@@ -20,10 +22,12 @@
 <s:RadioButtonGroup id="$1" enabled="${2:true}" selectedValue="${3:null}" selection="${4:null}" change="${5:$1ChangeHandler(event)}" itemClick="${6:$1ItemClickHandler(evet)}"/>
 <s:RichEditableText id="$1" textAlign="${2:justify}" width="${3:100%}" textFlow="$4"/>
 <s:RichText id="$1" width="${2:100}" height="${3:100}" columnCount="${4:2}" columnGap="${5:10}">$0</s:RichText>
+<fx:Script><![CDATA[$0]]></fx:Script>
 <s:Scroller id="$1" measuredSizeIncludesScrollBars="${2:true}" minViewportInset="${3:0}" viewport="${4:null}">$0</s:Scroller>
 <s:SkinnableContainer id="$1" autoLayout="${2:true}" clipAndEnableScrolling="${3:false}" creationPolicy="${4:auto}" horizontalScrollPosition="${5:null}" layout="${6:BasicLayout}" verticalScrollPosition="${7:null}" elementAdd="${8:$1ElementAddHandler(event)}" elementRemove="${9:$1ElementRemoveHandler(event)}" styleName="$10">$0</s:SkinnableContainer>
 <s:SkinnableDataContainer id="$1" autoLayout="${2:true}" clipAndEnableScrolling="${3:false}" dataProvider="${4:null}" horizontalScrollPosition="${5:null}" itemRenderer="${6:null}" itemRendererFunction="${7:null}" layout="${8:VerticalLayout}" typicalItem="${9:null}" verticalScrollPosition="${10:null}" rendererAdd="${11:$1RenderAddHandler(event)}" rendererRemove="${12:$2RenderRemoveHandler(event)}">$0</s:SkinnableDataContainer>
 <s:Spinner id="$1" allowValueWrap="${2:false}" minimum="$3" maximum="$4" change="${5:$1ChangeHandler(event)}"/>
+<fx:Style source="$1"/>
 <s:TextArea id="$1" width="${2:100}" height="${3:100}" heightInLines="$4" textFlow="$5" widthInChars="$6"/>
 <s:TextInput id="$1" text="$2" width="${3:100}" height="${4:100}" widthInChars="$5" enter="${6:$1EnterHandler(event)}"/>
 <s:TileGroup id="$1" columnAlign="${2:left}" columnCount="${3:-1}" columnWidth="${4:0}" horizontalAlign="${5:justify}" horizontalGap="$6:6}"} orientation="${7:rows}" requestedColumnCount="${8:-1}" requestedRowCount="${9:-1}" rowAlign="${10:top}" rowCount="${11:-1}" rowHeight="${12:0}" verticalAlign="${13:justify}" verticalGap="${14:6}">$0</s:TileGroup>
