@@ -18,7 +18,7 @@ require SUPPORT + '/lib/osx/plist'
 word = STDIN.read.strip
 TextMate.exit_show_tool_tip("Please select a term to complete.") if word.empty?
 
-word = "mx:"+word if word !~ /mx/
+#word = "mx:"+word if word !~ /mx/
 
 words = `grep -i "#{word}" "$TM_BUNDLE_PATH/support/data/mx_completions.txt"`.split("\n")
 TextMate.exit_show_tool_tip "No completion available" if words.empty?
@@ -26,7 +26,7 @@ TextMate.exit_show_tool_tip "No completion available" if words.empty?
 if words.size &gt; 1
     
 	words = words.collect { |e| 
-	    mxmlTag = /mx\:(\w+)(\s(\(\w+\)))?/.match(e)
+	    mxmlTag = /\:(\w+)?/.match(e)
 		suffix = " "
 		tag = e
 		if mxmlTag[3] != nil

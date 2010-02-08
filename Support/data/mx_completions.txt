@@ -1,4 +1,39 @@
-<mx:Accordion ${1:id="$2" }${3:width="$4" }${5:height="$6"}>$0</mx:Accordion>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/halo" minWidth="${1:800}" minHeight="${2:600}" width="${3:1024}"  height="${4:768}" backgroundColor="${5:0xFFFFFF}"  pageTitle="$6" preloader="$7" usePreloader="${8:true}" applicationComplete="${9:applicationCompleteHandler(event)}" currentState="$10">$0</s:Application>
+<s:Button id="$1" label="$2" click="${3:$1ClickHandler(event)}"/>
+<s:ButtonBar id="$1" styleName="$2" itemClick="${3:$1ClickHandler(event);}">$0</s:ButtonBar>
+<s:ButtonBarButton id="$1" click="${2:$1ClickHandler(event)}">$0</s:ButtonBarButton>
+<s:CheckBox id="$1" label="$2" click="${3:$1ClickHandler(event)}"/>
+<s:DataGroup id="$1" dataProvider="${2:null}" itemRenderer="${3:$1ItemRenderer}" rendererAdd="${4:$1RenderAddHandler(event)}" rendererRemove="${5:$1RenderRemove(event)}"/>
+<s:DataRenderer id="$1" data="$2" dataChange="${3:$1DataChangeHandler(event)}"/>
+<s:DropDownList id="$1" prompt="$2" closed="${3:$1ClosedHandler(event)}" open="${4:$1OpenHandler(event)}"/>
+<s:Group id="$1"/>
+<s:HGroup id="$1"/>
+<s:HScrollBar id="$1" viewport="$2" width="${3:$2.width}" heigth="$4" styleName="$5"/>
+<s:HSlider id="$1" minimum="${2:0}" maximum="${3:1}" value="${4:1}" stepSize="${5:0.1}" snapInterval="${6:0.1}" liveDragging="${7:true}" change="${8:$1ChangeHandler(event)}"/>
+<s:Label id="$1" width="$2" height="$3" styleName="$4"/>
+<s:List id="$1" allowMultipleSelection="${2:false}" selectedIndices="${3:null}" selectedItems="${4:null}" useVirtualLayout="${5:true}"/>
+<s:NavigatorContent id="$1" icon="${2:null}" label="$3"/>
+<s:NumericStepper id="$1" imeMode="${2:null}" maxChars="${3:10}" maximum="${4:10}" valueFormatFunction="${5:null}" valueParseFunction="${6:null}"/>
+<s:Panel id="$1" controlBarContent="${2:null}" controlBarLayout="${3:HorizontalLayout}" title="$4"}>$5</Panel>
+<s:PopUpAnchor id="$1" displayPopUp="${2:false}" popUp="$3" popUpHeightMatchesAnchorHeight="${4:false}" popUpPosition="${5:topLeft}" popUpWidthMatchesAnchorWidth="${6:false}"}/>
+<s:RadioButton id="$1" group="${2:This is automatically created}" groupName="${3:radioGroup}" value="${4:null}"/>
+<s:RadioButtonGroup id="$1" enabled="${2:true}" selectedValue="${3:null}" selection="${4:null}" change="${5:$1ChangeHandler(event)}" itemClick="${6:$1ItemClickHandler(evet)}"/>
+<s:RichEditableText id="$1" textAlign="${2:justify}" width="${3:100%}" textFlow="$4"/>
+<s:RichText id="$1" width="${2:100}" height="${3:100}" columnCount="${4:2}" columnGap="${5:10}">$0</s:RichText>
+<s:Scroller id="$1" measuredSizeIncludesScrollBars="${2:true}" minViewportInset="${3:0}" viewport="${4:null}">$0</s:Scroller>
+<s:SkinnableContainer id="$1" autoLayout="${2:true}" clipAndEnableScrolling="${3:false}" creationPolicy="${4:auto}" horizontalScrollPosition="${5:null}" layout="${6:BasicLayout}" verticalScrollPosition="${7:null}" elementAdd="${8:$1ElementAddHandler(event)}" elementRemove="${9:$1ElementRemoveHandler(event)}" styleName="$10">$0</s:SkinnableContainer>
+<s:SkinnableDataContainer id="$1" autoLayout="${2:true}" clipAndEnableScrolling="${3:false}" dataProvider="${4:null}" horizontalScrollPosition="${5:null}" itemRenderer="${6:null}" itemRendererFunction="${7:null}" layout="${8:VerticalLayout}" typicalItem="${9:null}" verticalScrollPosition="${10:null}" rendererAdd="${11:$1RenderAddHandler(event)}" rendererRemove="${12:$2RenderRemoveHandler(event)}">$0</s:SkinnableDataContainer>
+<s:Spinner id="$1" allowValueWrap="${2:false}" minimum="$3" maximum="$4" change="${5:$1ChangeHandler(event)}"/>
+<s:TextArea id="$1" width="${2:100}" height="${3:100}" heightInLines="$4" textFlow="$5" widthInChars="$6"/>
+<s:TextInput id="$1" text="$2" width="${3:100}" height="${4:100}" widthInChars="$5" enter="${6:$1EnterHandler(event)}"/>
+<s:TileGroup id="$1" columnAlign="${2:left}" columnCount="${3:-1}" columnWidth="${4:0}" horizontalAlign="${5:justify}" horizontalGap="$6:6}"} orientation="${7:rows}" requestedColumnCount="${8:-1}" requestedRowCount="${9:-1}" rowAlign="${10:top}" rowCount="${11:-1}" rowHeight="${12:0}" verticalAlign="${13:justify}" verticalGap="${14:6}">$0</s:TileGroup>
+<s:ToggleButton id="$1" label="$2" click="${3:$1ClickHandler(event)}"/>
+<s:VGroup id="$1" gap="${2:6}" horizontalAlign="${3:left}" requestedRowCount="${4:-1}" rowHeight="$5" variableRowHeight="${6:true}">$0</s:VGroup>
+<s:VideoPlayer id="$1" autoPlay="${2:true}" autoRewind="${3:false}" enabled="${4:true}" loop="${5:false}" maintainAspectRatio="${6:true}" muted="${7:false}" source="$8" volume="${9:.75}" close="${10:$1CloseHandler(event)}" complete="${11:$1CompleteHandler(event)}" metadataReceived="${12:$1MetadataReceivedHandler(event)}" playheadUpdate="${13:$1PlayheadUpdateHandler(event)}" progress="${14:$1ProgressHandler(event)}" ready="${15:$1ReadyHandler(event)}"/>
+<s:VScrollBar id="$1" viewport="$2" width="$3" height="${4:$2.height}" styleName="$5"/>
+<s:VSlider id="$1" width="$2" height="$3" minimum="${4:20}" maximum="${5:200}" liveDragging="${6:true}" change="${7:$1ChangeHandler(event)}" value="${8:20}"/>
+<s:Window id="$1" alwaysInFront="${2:false}" backgroundColor="${3:white}" maxHeight="$4" maximizable="${5:true}" maxWidth="$6" menu="${7:null}" minHeight="$8" minimizable="${9:true}" minWidth="$10" resizable="${11:true}" showStatusBar="${12:true}" status="$13" systemChrome="${14:standard}" title="$15" titleIcon="${16:null}" transparent="${17:false}" type="${18:normal}" visible="${19:true}" width="${20:100}" height="${21:100}" closeEffect="$22" minimizeEffect="$23" unminimizeEffect="$24" applicationActivate="${25:$1ApplicationActivateEvent(event)}" applicationDeactivate="${26:$1ApplicationDeactivateEvent(event)}" close="${27:$1CloseHandler(event)}" closing="${28:$1ClosingHandler(event)}" displayStateChange="${29:$1DisplayStateChangeHandler(event)}" displayStateChanging="${30:$1DisplayStateChangingHandler(event)}" moving="${31:$1MovingHandler(event)}" networkChange="${32:$1NetworkChangeHandler(event)}" resizing="${33:$1ResizingHandler(event)}" windowActivate="${34:$1WindowActivateHandler(event)}" windowComplete="${35:$1WindowCompleteHandler(event)}" windowDeactivate="${36:$1WindowDeactivateHandler(event)}" windowMove="${37:$1WindowMoveHandler(event)}" windowResize="${38:$1WindowResizeHandler(event)}"/>
+<mx:Accordion ${1:id="$2"} ${3:width="$4"} ${5:height="$6"}>$0</mx:Accordion>
 <mx:AddChild${1: target="${2:null}"}${3: targetFactory="${4:null}"}${5: creationPolicy="${6:auto|all|none}"}${7: position="${8:before|after|firstChild|lastChild}"}${9: relativeTo="${10:null}"}>$0</mx:AddChild>
 <mx:AnimateProperty id="${1:ID}" property="${2:name}" fromValue="${3:0}" toValue="${4:0}" isStyle="${5:false|true}" roundValue="${6:false|true}"/>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml">$0</mx:Application>
@@ -6,6 +41,7 @@
 <mx:Array>$0</mx:Array>
 <mx:ArrayCollection source="${1:null}"/>
 <mx:Binding source="${1:objA.property}" destination="${2:objB.property}" />
+<mx:Border ${1:backgroundFill="${2:null}"} ${3:borderStroke="${4:null}"} ${5:backgroundImage="${6:undefined}"} ${7:backgroundImageFillMode="${8:scale}"} ${9:borderAlpha="${10:1.0}"} ${11:borderColor="${12:0xB7BABC}"} ${13:borderStyle="${14:solid}"} ${15:borderVisible="${16:true}"} ${17:borderWeight="${1}"} ${18:cornerRadius="${19:0}"} ${20:dropShadowVisible="${21:false}"}/>
 <mx:Box id="${1:bBox}" direction="${2:${3:vertical}${4:|horizontal}}">$0</mx:Box>
 <mx:Button ${1:id="$2" }${3:label="$4" }${5:click="$6" }/>
 <mx:ButtonBar horizontalGap="5" itemClick="${1:clickHandler(event);}">$0</mx:ButtonBar>
