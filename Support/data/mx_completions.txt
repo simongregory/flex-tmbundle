@@ -25,7 +25,7 @@
 <fx:Script><![CDATA[$0]]></fx:Script>
 <s:Scroller id="$1" measuredSizeIncludesScrollBars="${2:true}" minViewportInset="${3:0}" viewport="${4:null}">$0</s:Scroller>
 <s:SkinnableContainer id="$1" autoLayout="${2:true}" clipAndEnableScrolling="${3:false}" creationPolicy="${4:auto}" horizontalScrollPosition="${5:null}" layout="${6:BasicLayout}" verticalScrollPosition="${7:null}" elementAdd="${8:$1ElementAddHandler(event)}" elementRemove="${9:$1ElementRemoveHandler(event)}" styleName="$10">$0</s:SkinnableContainer>
-<s:SkinnableDataContainer id="$1" autoLayout="${2:true}" clipAndEnableScrolling="${3:false}" dataProvider="${4:null}" horizontalScrollPosition="${5:null}" itemRenderer="${6:null}" itemRendererFunction="${7:null}" layout="${8:VerticalLayout}" typicalItem="${9:null}" verticalScrollPosition="${10:null}" rendererAdd="${11:$1RenderAddHandler(event)}" rendererRemove="${12:$2RenderRemoveHandler(event)}">$0</s:SkinnableDataContainer>
+<s:SkinnableDataContainer id="$1" autoLayout="${2:true}" clipAndEnableScrolling="${3:false}" dataProvider="${4:null}" horizontalScrollPosition="${5:null}" itemRenderer="${6:null}" itemRendererFunction="${7:null}" layout="${8:VerticalLayout}" typicalItem="${9:null}" verticalScrollPosition="${10:null}" rendererAdd="${11:$1RenderAddHandler(event)}" rendererRemove="${12:$1RenderRemoveHandler(event)}">$0</s:SkinnableDataContainer>
 <s:Spinner id="$1" allowValueWrap="${2:false}" minimum="$3" maximum="$4" change="${5:$1ChangeHandler(event)}"/>
 <fx:Style source="$1"/>
 <s:TextArea id="$1" width="${2:100}" height="${3:100}" heightInLines="$4" textFlow="$5" widthInChars="$6"/>
