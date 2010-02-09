@@ -1,4 +1,5 @@
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/halo" minWidth="${1:800}" minHeight="${2:600}" width="${3:1024}"  height="${4:768}" backgroundColor="${5:0xFFFFFF}"  pageTitle="$6" preloader="$7" usePreloader="${8:true}" applicationComplete="${9:applicationCompleteHandler(event)}" currentState="$10">$0</s:Application>
+<s:BitmapImage id="$1" source="$2" width="$3" height="$4" fillMode="${5:scale}"/>
 <s:Button id="$1" label="$2" click="${3:$1ClickHandler(event)}"/>
 <s:ButtonBar id="$1" styleName="$2" itemClick="${3:$1ClickHandler(event);}">$0</s:ButtonBar>
 <s:ButtonBarButton id="$1" click="${2:$1ClickHandler(event)}">$0</s:ButtonBarButton>
@@ -7,19 +8,25 @@
 <s:DataRenderer id="$1" data="$2" dataChange="${3:$1DataChangeHandler(event)}"/>
 <fx:Declarations>$0</fx:Declarations>
 <s:DropDownList id="$1" prompt="$2" closed="${3:$1ClosedHandler(event)}" open="${4:$1OpenHandler(event)}"/>
+<s:Ellipse id="$1" width="$2" heigth="$3">$0</s:Ellipse>
+<s:Graphic id="$1" viewHeight="$2" viewWidth="$3">$0</s:Graphic>
 <s:Group id="$1"/>
 <s:HGroup id="$1"/>
 <s:HScrollBar id="$1" viewport="$2" width="${3:$2.width}" heigth="$4" styleName="$5"/>
 <s:HSlider id="$1" minimum="${2:0}" maximum="${3:1}" value="${4:1}" stepSize="${5:0.1}" snapInterval="${6:0.1}" liveDragging="${7:true}" change="${8:$1ChangeHandler(event)}"/>
 <s:Label id="$1" width="$2" height="$3" styleName="$4"/>
+<s:Line id="$1" x="$2" y="$3" xFrom="$4" xTo="$5" yFrom="$6" yTo="$7" stroke="$8"/>
 <s:List id="$1" allowMultipleSelection="${2:false}" selectedIndices="${3:null}" selectedItems="${4:null}" useVirtualLayout="${5:true}"/>
 <fx:Metadata>$0</fx:Metadata>
 <s:NavigatorContent id="$1" icon="${2:null}" label="$3"/>
 <s:NumericStepper id="$1" imeMode="${2:null}" maxChars="${3:10}" maximum="${4:10}" valueFormatFunction="${5:null}" valueParseFunction="${6:null}"/>
-<s:Panel id="$1" controlBarContent="${2:null}" controlBarLayout="${3:HorizontalLayout}" title="$4"}>$5</Panel>
+<s:Panel id="$1" controlBarContent="${2:null}" controlBarLayout="${3:HorizontalLayout}" title="$4"}>$0</Panel>
+<s:Path id="$1" data="$2">$0</s:Path>
 <s:PopUpAnchor id="$1" displayPopUp="${2:false}" popUp="$3" popUpHeightMatchesAnchorHeight="${4:false}" popUpPosition="${5:topLeft}" popUpWidthMatchesAnchorWidth="${6:false}"}/>
 <s:RadioButton id="$1" group="${2:This is automatically created}" groupName="${3:radioGroup}" value="${4:null}"/>
 <s:RadioButtonGroup id="$1" enabled="${2:true}" selectedValue="${3:null}" selection="${4:null}" change="${5:$1ChangeHandler(event)}" itemClick="${6:$1ItemClickHandler(evet)}"/>
+<s:Rect id="$1" width="$2" height="$3">$0</s:Rect>
+<s:RectangularDropShadow id="$1" blRadius="$2" blurX="$3" blurY="$4" color="$5"/>
 <s:RichEditableText id="$1" textAlign="${2:justify}" width="${3:100%}" textFlow="$4"/>
 <s:RichText id="$1" width="${2:100}" height="${3:100}" columnCount="${4:2}" columnGap="${5:10}">$0</s:RichText>
 <fx:Script><![CDATA[$0]]></fx:Script>
@@ -33,6 +40,7 @@
 <s:TileGroup id="$1" columnAlign="${2:left}" columnCount="${3:-1}" columnWidth="${4:0}" horizontalAlign="${5:justify}" horizontalGap="$6:6}"} orientation="${7:rows}" requestedColumnCount="${8:-1}" requestedRowCount="${9:-1}" rowAlign="${10:top}" rowCount="${11:-1}" rowHeight="${12:0}" verticalAlign="${13:justify}" verticalGap="${14:6}">$0</s:TileGroup>
 <s:ToggleButton id="$1" label="$2" click="${3:$1ClickHandler(event)}"/>
 <s:VGroup id="$1" gap="${2:6}" horizontalAlign="${3:left}" requestedRowCount="${4:-1}" rowHeight="$5" variableRowHeight="${6:true}">$0</s:VGroup>
+<s:VideoElement id="$1" source="$2" width="$3" height="$4" autoPlay="${5:true}" autoRewind="${6:true}"/>
 <s:VideoPlayer id="$1" autoPlay="${2:true}" autoRewind="${3:false}" enabled="${4:true}" loop="${5:false}" maintainAspectRatio="${6:true}" muted="${7:false}" source="$8" volume="${9:.75}" close="${10:$1CloseHandler(event)}" complete="${11:$1CompleteHandler(event)}" metadataReceived="${12:$1MetadataReceivedHandler(event)}" playheadUpdate="${13:$1PlayheadUpdateHandler(event)}" progress="${14:$1ProgressHandler(event)}" ready="${15:$1ReadyHandler(event)}"/>
 <s:VScrollBar id="$1" viewport="$2" width="$3" height="${4:$2.height}" styleName="$5"/>
 <s:VSlider id="$1" width="$2" height="$3" minimum="${4:20}" maximum="${5:200}" liveDragging="${6:true}" change="${7:$1ChangeHandler(event)}" value="${8:20}"/>
@@ -74,7 +82,7 @@
 <mx:HRule ${1:width="${2:100%}" }${3:strokeColor="${4:0xC4CCCC}" }${5:shadowColor="${6:0xEEEEEE}" }${7:strokeWidth="${8:1}" }/>
 <mx:HSlider liveDragging="${1:false|true}" minimum="$2" maximum="$3" showDataTip="${4:true|false}" value="$5" change="$6" />
 <mx:Image autoLoad="${1:true|false}" source="${2:url}" complete="$3" />
-<mx:Label id="${1:lLabel}" text="${2:label text}"/>$0
+<mx:Label id="${1:lLabel}" text="${2:label text}"/>
 <mx:LinearGradient>$0</mx:LinearGradient>
 <mx:LinkBar ${1:id="$2" }${3:width="${4:100%}" }${5:itemClick="$6"}>$0</mx:LinkBar>
 <mx:LinkButton ${1:id="$2" }${3:label="$4" }${5:click="$6" }/>
