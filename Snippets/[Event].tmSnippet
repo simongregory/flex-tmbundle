@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>[Event(name="${1:eventName}"${2:, type="flash.events.Event"})]</string>
+	<key>name</key>
+	<string>[Event]</string>
+	<key>scope</key>
+	<string>source.actionscript.3</string>
+	<key>tabTrigger</key>
+	<string>event</string>
+	<key>uuid</key>
+	<string>0B758866-A1A6-40BB-AF05-33BF3B4C3F72</string>
+</dict>
+</plist>

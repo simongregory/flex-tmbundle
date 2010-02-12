@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
+{
+	super.updateDisplayList(unscaledWidth, unscaledHeight);
+
+	$0
+}</string>
+	<key>name</key>
+	<string>updateDisplayList</string>
+	<key>scope</key>
+	<string>source.actionscript.3</string>
+	<key>tabTrigger</key>
+	<string>updateDisplayList</string>
+	<key>uuid</key>
+	<string>F1292FC4-B0D2-4D50-A0D1-B2A96D8D4F98</string>
+</dict>
+</plist>

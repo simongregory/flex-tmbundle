@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>override protected function commitProperties():void
+{
+	super.commitProperties();
+	$0
+}
+</string>
+	<key>name</key>
+	<string>commitProperties</string>
+	<key>scope</key>
+	<string>source.actionscript.3</string>
+	<key>tabTrigger</key>
+	<string>commitProperties</string>
+	<key>uuid</key>
+	<string>191C9263-12BA-4F91-869A-A6A268FF266D</string>
+</dict>
+</plist>
