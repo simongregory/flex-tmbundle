@@ -56,10 +56,10 @@ if __FILE__ == $0
     def test_item
 
       b = BundleLocator.new
-      item_a = "/ActionScript 3.tmbundle/Support/lib/flex_env.rb"
+      item_a = "/ActionScript 3.tmbundle/Support/lib/c_env.rb"
       item_b = "/A Non Existent.tmbundle/Support/lib/foo.rb"
       
-      assert_equal( "/Users/#{ENV['USER']}/Library/Application Support/TextMate/Bundles/ActionScript 3.tmbundle/Support/lib/flex_env.rb",
+      assert_equal( "/Users/#{ENV['USER']}/Library/Application Support/TextMate/Bundles/ActionScript 3.tmbundle/Support/lib/c_env.rb",
                     b.find_bundle_item(item_a))
       
       assert_equal( nil,
