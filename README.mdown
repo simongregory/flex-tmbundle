@@ -1,9 +1,9 @@
 TextMate Flex Bundle
 ====================
 
-Provides [TextMate]() support for working with [Adobes]() [Flex]() framework (version 3.x).  
+Provides [TextMate][] support for working with [Adobes][Adobe] [Flex][] framework (version 3.x).  
 
-For full functionality the [ActionScript 3.tmbundle]() should also be installed.
+For full functionality the [ActionScript 3.tmbundle][] should also be installed.
 
 Installation
 ------------
@@ -64,4 +64,4 @@ An exception is made for files in readable text which contain their own license 
 [TextMate]: http://macromates.com 
 [Adobe]: http://www.adobe.com
 [Flex]: http://www.adobe.com/products/flex/
-[ActionScript 3.tmbundle]: http://github.com/simongregory/actionscript3.tmbundle
+[ActionScript 3.tmbundle]: http://github.com/simongregory/actionscript3-tmbundle
