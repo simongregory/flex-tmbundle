@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby -wKU
+
+SUPPORT = "#{ENV['TM_SUPPORT_PATH']}"
+
+require SUPPORT + '/lib/ui'
+require SUPPORT + '/lib/exit_codes'
+
+list = [
+  { 'title' =&gt; 'fx', 'data' =&gt; 'xmlns:${1:fx}="${2:http://ns.adobe.com/mxml/2009}" ' },
+  { 'title' =&gt; 's', 'data' =&gt; 'xmlns:${1:s}="${2:library://ns.adobe.com/flex/spark}" ' },
+  { 'title' =&gt; 'mx language', 'data' =&gt; 'xmlns:${1:mx}="${2:http://www.adobe.com/2006/mxml}" ' },
+  { 'title' =&gt; 'mx halo', 'data' =&gt; 'xmlns:${1:mx}="${2:library://ns.adobe.com/flex/halo}" ' }
+]
+
+ns = TextMate::UI.menu(list)
+
+if ns == nil 
+	TextMate.exit_insert_text( "xmlns" )
+end
+
+TextMate.exit_insert_snippet( ns['data'] )
+
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>name</key>
+	<string>xmlns</string>
+	<key>output</key>
+	<string>afterSelectedText</string>
+	<key>scope</key>
+	<string>meta.tag.component.xml.mxml</string>
+	<key>tabTrigger</key>
+	<string>xmlns</string>
+	<key>uuid</key>
+	<string>FCF91C5D-FF26-4E83-9B62-CA5B60D065F7</string>
+</dict>
+</plist>
