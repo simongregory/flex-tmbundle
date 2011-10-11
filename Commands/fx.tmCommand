@@ -9,20 +9,21 @@
 
 require ENV['TM_BUNDLE_SUPPORT'] + '/lib/flex_tag'
 
-complete_flex_tag('mx')</string>
+complete_flex_tag('fx')
+</string>
 	<key>fallbackInput</key>
 	<string>word</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>mx</string>
+	<string>fx</string>
 	<key>output</key>
 	<string>insertAsSnippet</string>
 	<key>scope</key>
 	<string>text.xml.mxml</string>
 	<key>tabTrigger</key>
-	<string>mx</string>
+	<string>fx</string>
 	<key>uuid</key>
-	<string>587F82F0-ABFE-4498-ADD1-07457058C284</string>
+	<string>3B963E44-1053-45A5-97A5-3333AA1A4B59</string>
 </dict>
 </plist>
